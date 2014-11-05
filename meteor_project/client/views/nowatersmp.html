@@ -1,0 +1,31 @@
+<head>
+  <title>nowatersmp</title>
+</head>
+
+<body>
+  {{> layout }}
+</body>
+
+
+<template name="layout">
+  <div class="container-fluid">
+    {{#unless loggedIn}}
+      {{> login_page }}
+    {{else}}
+      {{> navbar }}
+      {{#if notificationsView }}
+        {{> notifications_view }}
+      {{/if}}
+      {{#if settingsView }}
+        {{> settings_template }}
+      {{/if}}
+      {{#if houseManagerView }}
+        {{> house_manager_template }}
+      {{/if}}
+      {{#if sendNotificationsView }}
+        {{> send_notifications_template }}
+      {{/if}}
+    {{/unless}}
+  </div>
+</template>
+
