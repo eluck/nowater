@@ -15,5 +15,5 @@ Template.layout.helpers
     Session.equals('currentView', 'houseManagerView')
 
 
-  sendNotificationsView: ->
-    Session.equals('currentView', 'sendNotificationsView')
+  addEventView: ->
+    Session.equals('currentView', 'addEventView')

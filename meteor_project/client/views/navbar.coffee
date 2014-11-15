@@ -11,5 +11,5 @@ Template.navbar.events
     Session.set('currentView', 'houseManagerView')
 
 
-  'click #sendNotificationsView': ->
-    Session.set('currentView', 'sendNotificationsView')
+  'click #addEventView': ->
+    Session.set('currentView', 'addEventView')
