@@ -1,12 +1,10 @@
-Template.house_manager_template.events
+Template.settings_template.events
   'click button#submitbtn': (event, template) ->
     event.preventDefault()
     event.stopPropagation()
-    address = $('#address').val()
+    address = $('#selectaddress').val()
     return unless address
-    sameAddress = Addresses.findOne address: address
-    return if sameAddress
-    Addresses.insert address: address, manager: Meteor.userId(), inhabitants: []
+    Addresses.update address, $addToSet : inhabitants: Meteor.userId()
     $('#address').val('')
 
 
@@ -15,14 +13,16 @@ Template.house_manager_template.events
     event.stopPropagation()
     $('#address').val('').focus()
 
+  'click button#deleteFromAddress' : (event, template) ->
+    event.preventDefault()
+    event.stopPropagation()
+    Addresses.update @_id, $pull: inhabitants: Meteor.userId()
 
 
-Template.house_manager_template.helpers
+Template.settings_template.helpers
   addresses: ->
-    Addresses.find manager: Meteor.userId()
+    Addresses.find inhabitants : $nin : [Meteor.userId()]
 
-
-
-Template.address_template.events
-  'click .delete': (event, template) ->
-    Addresses.remove _id: template.data._id
+  userAddresses: ->
+    cur = Addresses.find inhabitants : Meteor.userId()
+    return cur

@@ -11,9 +11,9 @@
             <h3>
               Мои адреса
             </h3>
-            {{#if addresses.count}}
-              {{#each addresses}}
-                {{> address_template }}
+            {{#if userAddresses.count}}
+              {{#each userAddresses}}
+                {{> userAddress }}
               {{/each}}
             {{else}}
               <div class="row">
@@ -38,18 +38,10 @@
                   <label class="col-md-4 control-label" for="selectaddress">Выберите ваш дом</label>
                   <div class="col-md-4">
                     <select id="selectaddress" name="selectaddress" class="form-control">
-                      <option value="none">Адрес не выбран</option>
-                      <option value="none">Адрес не выбран</option>
+                      {{#each addresses}}
+                        <option value="{{_id}}">{{address}}</option>
+                      {{/each}}
                     </select>
-                  </div>
-                </div>
-
-                <!-- Text input-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="appartments">Введите номер квартиры</label>
-                  <div class="col-md-4">
-                    <input id="appartments" name="appartments" type="text" placeholder="Номер квартиры" class="form-control input-md">
-
                   </div>
                 </div>
 
@@ -68,4 +60,19 @@
         </div>
       </div>
     </div>
+</template>
+
+<template name="userAddress">
+  <div class="row">
+    <div class="col-xs-6 column">
+      <p>
+        {{ address }}
+      </p>
+    </div>
+    <div class="col-xs-6 column">
+      <p>
+        <button id="deleteFromAddress" class="delete btn btn-danger">Удалить адрес</button>
+      </p>
+    </div>
+  </div>
 </template>
