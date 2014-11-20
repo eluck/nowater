@@ -5,6 +5,8 @@ Template.house_manager_template.events
     address = $('#address').val()
     return unless address
     sameAddress = Addresses.findOne address: address
+    if !sameAddress.manager
+      Addresses.update sameAddress._id, $set: manager : Meteor.userId()
     return if sameAddress
     Addresses.insert address: address, manager: Meteor.userId(), inhabitants: []
     $('#address').val('')
@@ -25,4 +27,4 @@ Template.house_manager_template.helpers
 
 Template.address_template.events
   'click .delete': (event, template) ->
-    Addresses.remove _id: template.data._id
+    Addresses.update @_id,  $set: manager: null
