@@ -5,8 +5,9 @@ Template.house_manager_template.events
     address = $('#address').val()
     return unless address
     sameAddress = Addresses.findOne address: address
-    if !sameAddress.manager
-      Addresses.update sameAddress._id, $set: manager : Meteor.userId()
+    if sameAddress
+      if !sameAddress.manager
+        Addresses.update sameAddress._id, $set: manager : Meteor.userId()
     return if sameAddress
     Addresses.insert address: address, manager: Meteor.userId(), inhabitants: []
     $('#address').val('')
