@@ -37,11 +37,7 @@
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="selectaddress">Выберите ваш дом</label>
                   <div class="col-md-4">
-                    <select id="selectaddress" name="selectaddress" class="form-control">
-                      {{#each addresses}}
-                        <option value="{{_id}}">{{address}}</option>
-                      {{/each}}
-                    </select>
+                    {{> inputAutocomplete settings=addr id="addrsearch" class="form-control" placeholder="Адрес..."}}
                   </div>
                 </div>
 
@@ -75,4 +71,8 @@
       </p>
     </div>
   </div>
+</template>
+
+<template name="addressOption">
+    <span class="">{{address}}</span>
 </template>

@@ -2,10 +2,11 @@ Template.settings_template.events
   'click button#submitbtn': (event, template) ->
     event.preventDefault()
     event.stopPropagation()
-    address = $('#selectaddress').val()
-    return unless address
-    Addresses.update address, $addToSet : inhabitants: Meteor.userId()
-    $('#address').val('')
+    #address = $('#selectaddress').val()
+    address = Session.get 'selectedAddr'
+    return unless address.addr?
+    Addresses.update address.addr._id, $addToSet : inhabitants: Meteor.userId()
+    $('input#addrsearch').val('')
 
 
   'click button#cancelbtn': (event, template) ->
@@ -20,8 +21,21 @@ Template.settings_template.events
 
 
 Template.settings_template.helpers
-  addresses: ->
-    Addresses.find inhabitants : $nin : [Meteor.userId()]
+  addr: ->
+    position: "bottom",
+    limit: 5,
+    rules: [
+        token: ''
+        collection: Addresses
+        field: "address"
+        filter: inhabitants : $nin : [Meteor.userId()]
+        template: Template.addressOption
+        callback: (doc, element)->
+          #console.log(doc, element)
+          Session.set 'selectedAddr',
+            addr: doc
+    ]
+
 
   userAddresses: ->
     cur = Addresses.find inhabitants : Meteor.userId()
