@@ -37,7 +37,11 @@
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="selectaddress">Выберите ваш дом</label>
                   <div class="col-md-4">
-                    {{> inputAutocomplete settings=addr id="addrsearch" class="form-control" placeholder="Адрес..."}}
+                      <input class="form-control typeahead" name="addr2" type="text"
+                             placeholder="Поиск Улицы"
+                             autocomplete="off" spellcheck="off"
+                             data-source="addr_search"
+                             selected="addr_selected" />
                   </div>
                 </div>
 
