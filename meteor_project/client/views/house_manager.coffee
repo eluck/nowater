@@ -3,14 +3,14 @@ Template.house_manager_template.events
     event.preventDefault()
     event.stopPropagation()
     address = $('#address').val()
-    return unless address
-    sameAddress = Addresses.findOne address: address
-    if sameAddress
-      if sameAddress.manager? != Meteor.userId()
-        Addresses.update sameAddress._id, $set: manager : Meteor.userId()
-    return if sameAddress
-    Addresses.insert address: address, manager: Meteor.userId(), inhabitants: []
     $('#address').val('')
+    return unless address
+    Meteor.call 'addresses.insert', address: address, (error, result) ->
+      return unless error
+      switch error
+        when 'no required params' then 'do some fancy action'
+        when 'address exists' then 'do some fancy action'
+
 
 
   'click button#cancelbtn': (event, template) ->
