@@ -1,0 +1,1 @@
+@ArchivedAddresses = new Mongo.Collection 'archived_addresses'

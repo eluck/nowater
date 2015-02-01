@@ -8,8 +8,8 @@ Template.house_manager_template.events
     Meteor.call 'addresses.insert', address: address, (error, result) ->
       return unless error
       switch error
-        when 'no required params' then 'do some fancy action'
-        when 'address exists' then 'do some fancy action'
+        when MethodsErrors.noRequiredParams then 'do some fancy action'
+        when MethodsErrors.addressExists then 'do some fancy action'
 
 
 
@@ -28,4 +28,8 @@ Template.house_manager_template.helpers
 
 Template.address_template.events
   'click .delete': (event, template) ->
-    Addresses.update @_id,  $set: manager: null
+    Meteor.call 'addresses.remove', @_id, (error, result) ->
+      return unless error
+      switch error
+        when MethodsErrors.addressDoesNotExist then 'do some fancy action'
+        when MethodsErrors.notAManager then 'do some fancy action'
