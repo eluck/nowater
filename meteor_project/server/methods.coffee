@@ -5,6 +5,8 @@ async_kladr_return = (err, ret)->
     return []
   return ret.result
 
+
+
 kladrQuery = (token, key, query) ->
   return unless token
   return unless query
@@ -27,6 +29,7 @@ kladrQuery = (token, key, query) ->
   return HTTP.get url
 
 
+
 Meteor.methods
   addresses: (query, options)->
     return unless query
@@ -41,6 +44,8 @@ Meteor.methods
 
     return Addresses.find(inhabintants: $nin : [Meteor.userId()]).fetch()
 
+
+    
   kladr_street_search: (query, options) ->
 
     ret = kladrQuery '54721d677c5239f4168b457b', null,
