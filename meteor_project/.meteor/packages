@@ -12,3 +12,4 @@ mrt:bootstrap-3
 autopublish
 http
 sergeyt:typeahead
+momentjs:moment
