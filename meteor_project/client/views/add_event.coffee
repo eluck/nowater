@@ -22,6 +22,9 @@ Template.add_event_template.helpers
   addresses: ->
     Addresses.find manager: Meteor.userId()
 
+  events: ->
+    Events.find manager: Meteor.userId()
+
 
 
 Template.add_event_template.rendered = ->

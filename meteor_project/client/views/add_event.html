@@ -3,23 +3,26 @@
       <div class="col-md-12 column">
         <div class="page-header">
           <h1>
-            Настройка аккаунта управдома
+            События отключения
           </h1>
         </div>
+
         <div class="row clearfix">
+
           <div class="col-md-6 column">
             <h3>
-              Дома под моим управлением
+              Список событий
             </h3>
-            {{#if addresses.count}}
-              {{#each addresses}}
-                {{> address_template }}
+
+            {{#if events.count}}
+              {{#each events}}
+                {{> event_template }}
               {{/each}}
             {{else}}
               <div class="row">
                 <div class="col-md-6 column">
                   <p>
-                    Нет домов. Зарегистрируйте адрес своего дома, если вы управдом.
+                    Отключений воды нет.
                   </p>
                 </div>
               </div>
