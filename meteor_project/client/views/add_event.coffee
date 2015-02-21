@@ -28,7 +28,6 @@ Template.add_event_template.rendered = ->
 
   computations.push Tracker.autorun ->
     return unless Addresses.find().count()
-    console.log 'add_event_template autoruns'
     $("#select-addresses")[0]?.selectedIndex = 0;
 
   TrackerHelper.cleanUpComputationsWhenSwitchingFromView computations, 'addEventView'
