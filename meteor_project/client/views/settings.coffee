@@ -3,6 +3,7 @@ Template.settings_template.events
     event.preventDefault()
     event.stopPropagation()
     addressId = $('#select-addresses').val()
+    return unless addressId
     Meteor.call 'addresses.addInhabitant', addressId
 
 
