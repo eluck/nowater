@@ -17,10 +17,13 @@ Meteor.methods
     address = Addresses.findOne id
     throw new Meteor.Error MethodsErrors.addressDoesNotExist unless address
     throw new Meteor.Error MethodsErrors.notAManager unless Meteor.userId() == address.manager
-    address.old_id = address._id
-    delete address._id
-    ArchivedAddresses.insert address
-    Addresses.remove address.old_id
+    throw new Meteor.Error MethodsErrors.inhabitantsAreExist if address.inhabitants.length
+    oldId = address._id
+    if Meteor.isServer
+      address.old_id = address._id
+      delete address._id
+      ArchivedAddresses.insert address
+    Addresses.remove oldId
 
 
 
