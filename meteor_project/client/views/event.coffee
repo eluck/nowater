@@ -1,6 +1,6 @@
 Template.event_template.helpers
   dateFromFormatted: ->
-    Date(@dateFrom).toLocaleString()
+    moment(@dateFrom).format("ddd, MMM Do YYYY, h:mm:ss a")
 
   dateTillFormatted: ->
-    Date(@dateTill).toLocaleString()
+    moment(@dateTill).format("ddd, MMM Do YYYY, h:mm:ss a")
