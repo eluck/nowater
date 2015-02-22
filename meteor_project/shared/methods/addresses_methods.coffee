@@ -22,3 +22,11 @@ Meteor.methods
     ArchivedAddresses.insert address
     Addresses.remove address.old_id
 
+
+
+  'addresses.addInhabitant': (id) ->
+    unless Meteor.userId() then throw new Meteor.Error MethodsErrors.notAuthenticated
+    unless Addresses.findOne id then throw new Meteor.Error MethodsErrors.addressDoesNotExist
+    Addresses.update id, $addToSet: inhabitants: Meteor.userId()
+
+

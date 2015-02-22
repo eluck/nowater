@@ -33,15 +33,19 @@
             <form class="form-horizontal">
               <fieldset>
 
-                <!-- Select Basic -->
+                <!-- Select Multiple -->
                 <div class="form-group">
-                  <label class="col-md-4 control-label" for="selectaddress">Выберите ваш дом</label>
+                  <label class="col-md-4 control-label" for="select-addresses">Адрес(а)</label>
                   <div class="col-md-4">
-                      <input class="form-control typeahead" name="addr2" type="text"
-                             placeholder="Поиск Улицы"
-                             autocomplete="off" spellcheck="off"
-                             data-source="addr_search"
-                             selected="addr_selected" />
+                    {{#if addresses.count}}
+                      <select id="select-addresses" name="select-addresses" class="form-control">
+                        {{#each addresses}}
+                          <option value="{{_id}}">{{address}}</option>
+                        {{/each}}
+                      </select>
+                    {{else}}
+                      <p>Зарегистрируйте свой дом на этом сайте</p>
+                    {{/if}}
                   </div>
                 </div>
 
