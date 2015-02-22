@@ -1,6 +1,4 @@
 Template.notifications_view.helpers
   events: ->
-
-  addresses: ->
-    address = Addresses.find inhabitants : Meteor.userId()
-
+    addressesIds = Addresses.find(inhabitants: Meteor.userId()).map (address) -> address._id
+    Events.find selectAddresses: $in: addressesIds
