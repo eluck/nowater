@@ -1,24 +1,28 @@
 <template name="login_page">
-  <div class="row clearfix">
-    <div class="col-md-12 column">
-      <div class="jumbotron">
-        <h1>
-          Воды не будет!
-        </h1>
+        <video class="video-background" id="video" width="100%" height="auto" autoplay="autoplay" loop="loop" preload="auto">
+            <source src="videoBg/bg.mp4" type="video/mp4">
+        </video>
 
-        <p>
-          Это веб-приложение создано для оповещения об отключении горячей и холодной воды.
-        </p>
+    <div class="intro lighten-2 z-depth-1 login-page-box">
+        <h1 class="red-text center-align ">Воды не будет!</h1>
+        <h5 class="grey-text text-lighten-5 valign-wrapper">Это веб-приложение создано
+            для оповещения об отключении горячей и холодной воды.</h5>
+        <h5 class="grey-text text-lighten-5 valign-wrapper">Зарегистрируйтесь на сайте и получайте оповещения.
+            Не забудьте зарегистрировать вашего управдома.</h5>
 
-        <p>
-          Зарегистрируйтесь на сайте и получайте оповещения. Не забудьте зарегистрировать вашего управдома.
-        </p>
-
-        <p>
-          <a href="javascript:0">{{> loginButtons }}</a>
-        </p>
-
-      </div>
+        <p class="login-button"><a href="javascript:0">{{> loginButtons }}</a></p>
     </div>
-  </div>
+  <!--  <div class="section row login-page-box">
+        <div class="col s12 ">
+            <div class="card blue-grey darken-1 ">
+                <div class="card-content white-text padding-buttom ">
+                    <span class="card-title"><h3>Воды не будет!</h3></span>
+                    <p>Это веб-приложение создано для оповещения об отключении горячей и холодной воды.</p>
+                    <p>Зарегистрируйтесь на сайте и получайте оповещения. Не забудьте зарегистрировать вашего управдома.</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>  -->
 </template>
